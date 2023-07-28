@@ -2,6 +2,8 @@
 
 from pathlib import Path
 import os
+import dj_database_url
+
 
 import cloudinary
 from dotenv import load_dotenv
@@ -18,6 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'jdjdjdj'
 
+RENDER = os.environ.get('RENDER')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 ALLOWED_HOSTS = []
@@ -83,16 +86,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'yulav.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+if RENDER:
+    DATABASE_URL = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
 
 # Password validation

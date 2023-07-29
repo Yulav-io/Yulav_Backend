@@ -21,7 +21,7 @@ SECRET_KEY = 'jdjdjdj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -84,10 +84,18 @@ WSGI_APPLICATION = 'yulav.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'jttjz5t3QW0XvcsjbVq5',
+        'HOST': 'containers-us-west-41.railway.app',
+        'PORT': '7495',
+
     }
+
 }
 
 
@@ -127,16 +135,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
 MEDIA_URL='/media/'
 
 
 MEDIA_ROOT=BASE_DIR/'media'
-STATIC_ROOT=BASE_DIR/'static_root'
 
-STATICFILES_DIRS=[
-    BASE_DIR/'static',
-]
+STATIC_URL = 'static/'
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
 
 # Auth settings
 AUTH_USER_MODEL='users.User'

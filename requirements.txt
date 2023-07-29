@@ -7,4 +7,4 @@ django-cloudinary-storage
 mutagen
 stripe
 cloudinary 
-psycopg2
+psycopg2-binary

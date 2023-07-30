@@ -84,19 +84,16 @@ WSGI_APPLICATION = 'yulav.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-
     'default': {
-
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
         'PASSWORD': 'jttjz5t3QW0XvcsjbVq5',
         'HOST': 'containers-us-west-41.railway.app',
         'PORT': '7495',
-
     }
-
 }
+
 
 
 # Password validation
